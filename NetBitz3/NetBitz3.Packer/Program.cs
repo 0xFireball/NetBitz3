@@ -15,7 +15,7 @@ namespace NetBitz3.Packer
 			string inputExe = args[0];
 			byte[] asmCubeBytes = File.ReadAllBytes(inputExe);
 			var cube = new NBytzHyperKube.nKubeImporter();
-			AssemblyDef cubeDll = AssemblyDef.Load("NBytzHyperKube.dll"); //Load NBCube
+			AssemblyDef cubeDll = AssemblyDef.Load("NBytzHyperKube.exe"); //Load NBCube
             cubeDll.Name = "NBHyperKube";
             ModuleDef nbCubeMod = cubeDll.Modules[0];
             nbCubeMod.Resources.Add(new EmbeddedResource("nbPackedAssembly", asmCubeBytes));
