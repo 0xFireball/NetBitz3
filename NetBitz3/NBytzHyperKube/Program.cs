@@ -30,12 +30,23 @@ namespace NBytzHyperKube
         {
             return type.IsValueType ? Activator.CreateInstance(type) : null;
         }
-		public static void Main(string[] args)
+		private static int Main(string[] args)
 		{
 			var asm = Assembly.Load(StrmToBytes(LoadResourceText("nbPackedAssembly")));
 			MethodInfo main = asm.EntryPoint;
-            var defaultParameters = main.GetParameters().Select(p => GetDefaultValue(p.ParameterType)).ToArray();
-            main.Invoke(null, defaultParameters);
+			object[] inpArgs = new object[main.GetParameters().Length];
+			if (inpArgs.Length != 0)
+			{
+				inpArgs[0] = args;
+			}
+			object obj = main.Invoke(null, inpArgs);
+			if (obj is int)
+			{
+				return (int)obj;
+			}
+			return 0;
+            //var defaultParameters = main.GetParameters().Select(p => GetDefaultValue(p.ParameterType)).ToArray();
+            //main.Invoke(null, defaultParameters);
 		}
 	}
 }
