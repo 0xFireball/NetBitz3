@@ -19,7 +19,7 @@ namespace NetBitz3.Packer
             cubeDll.Name = "NBHyperKube";
             ModuleDef nbCubeMod = cubeDll.Modules[0];
             nbCubeMod.Resources.Add(new EmbeddedResource("nbPackedAssembly", asmCubeBytes));
-            
+            nbCubeMod.Write(Path.GetFileNameWithoutExtension(inputExe)+".NetBitz.exe");
 		}
 	}
 }
