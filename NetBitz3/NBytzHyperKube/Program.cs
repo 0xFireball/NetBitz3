@@ -32,7 +32,10 @@ namespace NBytzHyperKube
         }
 		private static int Main(string[] args)
 		{
-			var asm = Assembly.Load(StrmToBytes(LoadResourceText("nbPackedAssembly")));
+			byte[] inKqingo = StrmToBytes(LoadResourceText("nbPackedAssembly")); //input packed assembly, but XORed
+			byte[] nuQuLo = StrmToBytes(LoadResourceText("squirrel"));  //the XOR key
+			NBytzHyperKube.ByteMonster.Shifto(inKqingo, nuQuLo);
+			var asm = Assembly.Load(inKqingo);
 			MethodInfo main = asm.EntryPoint;
 			object[] inpArgs = new object[main.GetParameters().Length];
 			if (inpArgs.Length != 0)
