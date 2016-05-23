@@ -14,10 +14,13 @@ namespace NetBitz3.Packer
 			Console.WriteLine("(c) 2016, Nickel Hydrogen Aluminum Research. All rights reserved.");
 			string inputExe = args[0];
 			byte[] asmCubeBytes = File.ReadAllBytes(inputExe);
+			var inputExeMod = AssemblyDef.Load(inputExe).Modules[0];
+			var inputExeType = inputExeMod.Kind;
 			var cube = new NBytzHyperKube.nKubeImporter();
 			AssemblyDef cubeDll = AssemblyDef.Load("NBytzHyperKube.exe"); //Load NBCube
             cubeDll.Name = "NBHyperKube";
             ModuleDef nbCubeMod = cubeDll.Modules[0];
+			nbCubeMod.Kind = inputExeType;
             nbCubeMod.Resources.Add(new EmbeddedResource("nbPackedAssembly", asmCubeBytes));
             nbCubeMod.Write(Path.GetFileNameWithoutExtension(inputExe)+".NetBitz.exe");
 		}
