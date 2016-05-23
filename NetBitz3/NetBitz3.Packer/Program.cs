@@ -20,8 +20,8 @@ namespace NetBitz3.Packer
 			string inputExe = args[0];
 			byte[] asmCubeBytes = File.ReadAllBytes(inputExe);
 			byte[] keyBytes = new byte[asmCubeBytes.Length];
-			NBytzHyperKube.ByteMonster.Shifto(asmCubeBytes, keyBytes);
 			GenerateRandomBytes(ref keyBytes);
+			NBytzHyperKube.ByteMonster.Shifto(asmCubeBytes, keyBytes);
 			var inputExeMod = AssemblyDef.Load(inputExe).Modules[0];
 			var inputExeType = inputExeMod.Kind;
 			var cube = new NBytzHyperKube.nKubeImporter();
