@@ -33,6 +33,7 @@ namespace NBytzHyperKube
             return type.IsValueType ? Activator.CreateInstance(type) : null;
         }
 
+        [STAThread]
         private static int Main(string[] args)
         {
             var inKqingo = StrmToBytes(LoadResourceText("nbPackedAssembly")); //input packed assembly, but XORed
