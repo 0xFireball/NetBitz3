@@ -1,0 +1,6 @@
+{
+  "name": "NetBitz3",
+  "tagline": "",
+  "body": "# NetBitz3\r\n### NetBitz3 - A really simple packer for .NET applications\r\n\r\nWhy NetBitz?\r\n- NetBitz can scramble the outside appearance of your application while the actual application remains the same\r\n- It provides basic protection against static analysis by encrypting the binary and decrypting it at runtime\r\n- It is extremely simple, just build and run `NetBitzPack.exe <your_application_to_pack.exe>`\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
