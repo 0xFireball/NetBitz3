@@ -13,7 +13,7 @@ namespace NetBitz3.Packer
         public static void Main(string[] args)
         {
             Console.WriteLine("NetBitz3 - Nickel Hydrogen Aluminum Research < />");
-            Console.WriteLine("(c) 2016, Nickel Hydrogen Aluminum Research. All rights reserved.");
+            Console.WriteLine("(c) 2016, 0xFireball. All rights reserved.");
             if (args.Length == 0)
             {
                 Console.WriteLine("Usage:\nNetBitzPack <input file> [options]");
