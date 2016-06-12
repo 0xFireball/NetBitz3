@@ -1,5 +1,5 @@
 # NetBitz3
-## NetBitz3 - A really simple packer for .NET applications
+### NetBitz3 - A really simple packer for .NET applications
 
 Why NetBitz?
 - NetBitz can scramble the outside appearance of your application while the actual application remains the same
