@@ -45,8 +45,7 @@ namespace NetBitz3.Packer
 		        //Update metadata of nboutput to match input
 		        cubeHost.Name = inputExeAsm.Name;
 		        cubeHost.Version = inputExeAsm.Version;
-		        nbCubeMod.Assembly.Name = inputExeMod.Assembly.Name;
-		        nbCubeMod.Assembly.Version = inputExeMod.Assembly.Version;
+		        nbCubeMod.Name = inputExeMod.Assembly.Name;
 		        foreach (var attr in inputExeMod.Assembly.CustomAttributes)
 		        {
 			        nbCubeMod.Assembly.CustomAttributes.Add(attr);
