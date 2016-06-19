@@ -21,19 +21,24 @@ namespace NetBitz3.Packer
             }
             var inputExe = args[0];
             var asmCubeBytes = File.ReadAllBytes(inputExe);
+	        Console.WriteLine("Input file loaded.");
             var keyBytes = new byte[asmCubeBytes.Length];
+	        Console.Write("Encrypting...");
             GenerateRandomBytes(ref keyBytes);
             ByteMonster.Shifto(asmCubeBytes, keyBytes);
+	        Console.WriteLine("Done.");
             var inputExeMod = AssemblyDef.Load(inputExe).Modules[0];
             var inputExeType = inputExeMod.Kind;
             var cube = new nKubeImporter();
             var cubeHost = AssemblyDef.Load("NBytzHyperKube.exe"); //Load NBCube
             cubeHost.Name = "NBHyperKube";
             var nbCubeMod = cubeHost.Modules[0];
+	        Console.Write("Creating and writing new assembly...");
             nbCubeMod.Kind = inputExeType;
             nbCubeMod.Resources.Add(new EmbeddedResource("nbPackedAssembly", asmCubeBytes));
             nbCubeMod.Resources.Add(new EmbeddedResource("squirrel", keyBytes));
             nbCubeMod.Write(Path.GetFileNameWithoutExtension(inputExe) + ".NetBitz.exe");
+	        Console.WriteLine("Done.");
         }
 
         public static void GenerateRandomBytes(ref byte[] buffy)
